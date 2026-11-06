@@ -1,3 +1,4 @@
+import pytest
 def test_get_seeded_artwork(client, seeded_db):
     # Arrange: seeded_db has already loaded the 11 artworks (the Mona Lisa is first)
     expected = {"id": 1, **seeded_db[0]}
@@ -64,8 +65,6 @@ def test_delete_artwork(client, created_artwork):
     assert get_respose.status_code == 404
 
 # Unhappy-Path Tests
-import pytest
-
 @pytest.mark.parametrize(
     "method, use_body",
     [
